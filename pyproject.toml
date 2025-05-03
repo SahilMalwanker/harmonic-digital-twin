@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "harmonic-digital-twin"
+version = "1.0.0"
+description = "Digital twin of a harmonic-drive robot joint under model-based control (computed torque, P-PI, P-ReDuS), validated against 1 kHz lab measurements."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.23", "matplotlib>=3.7", "pillow>=9.1"]
+keywords = ["robotics", "control", "digital-twin", "model-based-control", "computed-torque", "system-identification"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.6,<0.17"]
+tools = ["scipy>=1.9"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+harmonictwin = ["data/*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY"]
+ignore = ["E741"]

@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.m linguist-language=MATLAB
+*.slx binary
+*.png binary
+*.gif binary
+*.csv linguist-generated
